@@ -1,37 +1,28 @@
 import { useState } from "react";
 import MemoList from "./MemoList";
+import Editor from "./Editor";
 import "./App.css";
-
-let nextId = 0;
 
 function App() {
   const [memos, setMemos] = useState([]);
   const [input, setInput] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   return (
     <>
-      <MemoList memos={memos} setMemos={setMemos} />
+      <MemoList memos={memos} setMemos={setMemos} setIsEditing={setIsEditing} />
 
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        type="text"
-      />
       <div>
-        <button
-          onClick={() => {
-            setMemos([...memos, { id: nextId++, memo: input }]);
-          }}
-        >
-          追加
-        </button>
-        <button>編集</button>
-        <button
-          onClick={() => {
-            setMemos(memos.filter((memo) => memo.id !== memo.id));
-          }}
-        >
-          削除
-        </button>
+        <div>
+          {isEditing && (
+            <Editor
+              input={input}
+              setInput={setInput}
+              setMemos={setMemos}
+              memos={memos}
+              setIsEditing={setIsEditing}
+            />
+          )}
+        </div>
       </div>
     </>
   );
