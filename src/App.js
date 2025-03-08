@@ -7,9 +7,17 @@ function App() {
   const [memos, setMemos] = useState([]);
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
+
   return (
     <>
-      <MemoList memos={memos} setMemos={setMemos} setIsEditing={setIsEditing} />
+      <MemoList
+        memos={memos}
+        setMemos={setMemos}
+        setIsEditing={setIsEditing}
+        setSelectedId={setSelectedId}
+        setInput={setInput}
+      />
 
       <div>
         <div>
@@ -20,6 +28,7 @@ function App() {
               setMemos={setMemos}
               memos={memos}
               setIsEditing={setIsEditing}
+              selectedId={selectedId}
             />
           )}
         </div>

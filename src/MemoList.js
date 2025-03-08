@@ -1,29 +1,42 @@
-export default function MemoList({ memos, setMemos, setIsEditing }) {
+import { v4 as uuidv4 } from "uuid";
+
+export default function MemoList({
+  memos,
+  setMemos,
+  setIsEditing,
+  setSelectedId,
+  setInput,
+}) {
   function handleDelete(id) {
     setMemos(memos.filter((memo) => memo.id !== id));
   }
 
-  function handleEdit({ memo }) {
-    setMemos(
-      memo.map((m) => {
-        if (m.id === memo.id) {
-          return memo;
-        } else {
-          return m;
-        }
-      })
-    );
-  }
   return (
     <>
       {memos.map((memo) => (
-        <div key={memo.id}>
+        <div
+          key={memo.id}
+          onClick={() => {
+            setInput(memo.memo);
+            setIsEditing(true);
+            setSelectedId(memo.id);
+          }}
+        >
           {memo.memo}
-          <button onClick={() => handleEdit(memo.id)}>編集</button>
           <button onClick={() => handleDelete(memo.id)}>削除</button>
         </div>
       ))}
-      <div onClick={() => setIsEditing(true)}>+</div>
+      <div
+        onClick={() => {
+          const newMemo = { id: uuidv4(), memo: "新規メモ" };
+          setMemos([...memos, newMemo]);
+          setIsEditing(true);
+          setSelectedId(newMemo.id);
+          setInput(newMemo.memo);
+        }}
+      >
+        +
+      </div>
     </>
   );
 }
