@@ -7,10 +7,6 @@ export default function MemoList({
   setSelectedId,
   setInput,
 }) {
-  function handleDelete(id) {
-    setMemos(memos.filter((memo) => memo.id !== id));
-  }
-
   return (
     <>
       {memos.map((memo) => (
@@ -23,7 +19,6 @@ export default function MemoList({
           }}
         >
           {memo.memo}
-          <button onClick={() => handleDelete(memo.id)}>削除</button>
         </div>
       ))}
       <div

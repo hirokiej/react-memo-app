@@ -6,7 +6,26 @@ export default function Editor({
   setIsEditing,
   selectedId,
 }) {
-  const selectedMemo = memos.find((memo) => memo.id === selectedId);
+  function handleEditMemo() {
+    setMemos(
+      memos.map((memo) => {
+        if (memo.id === selectedId) {
+          return { ...memo, memo: input };
+        }
+        return memo;
+      })
+    );
+    setIsEditing(false);
+  }
+
+  function handleDelete() {
+    setMemos(
+      memos.filter((memo) => {
+        return memo.id !== selectedId;
+      })
+    );
+    setIsEditing(false);
+  }
 
   return (
     <>
@@ -16,21 +35,8 @@ export default function Editor({
         type="text"
       ></textarea>
       <div>
-        <button
-          onClick={() => {
-            const editMemo = memos.map((memo) => {
-              if (memo.id === selectedId) {
-                return { ...memo, memo: input };
-              }
-              return memo;
-            });
-            setMemos(editMemo);
-            setIsEditing(false);
-          }}
-        >
-          更新
-        </button>
-        <button>削除</button>
+        <button onClick={handleEditMemo}>更新</button>
+        <button onClick={handleDelete}>削除</button>
       </div>
     </>
   );
