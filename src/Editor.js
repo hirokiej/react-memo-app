@@ -29,12 +29,7 @@ export default function Editor({
 
   return (
     <>
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        rows="12"
-        type="text"
-      />
+      <textarea value={input} onChange={(e) => setInput(e.target.value)} />
       <div className="button-group">
         <button onClick={handleEditMemo}>更新</button>
         <button onClick={handleDeleteMemo}>削除</button>
