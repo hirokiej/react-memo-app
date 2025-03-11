@@ -4,6 +4,7 @@ export default function MemoList({
   memos,
   setMemos,
   setIsEditing,
+  selectedId,
   setSelectedId,
   setInput,
 }) {
@@ -12,10 +13,12 @@ export default function MemoList({
       {memos.map((memo) => (
         <div
           key={memo.id}
+          className={memo.id === selectedId ? "selected-memo" : "other-memos"}
           onClick={() => {
             setInput(memo.memo);
             setIsEditing(true);
-            setSelectedId(memo.id);
+            setSelectedId(() => memo.id);
+            console.log("ID", selectedId);
           }}
         >
           {memo.memo}

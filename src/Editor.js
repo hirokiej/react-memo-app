@@ -32,9 +32,10 @@ export default function Editor({
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        rows="12"
         type="text"
-      ></textarea>
-      <div>
+      />
+      <div className="button-group">
         <button onClick={handleEditMemo}>更新</button>
         <button onClick={handleDelete}>削除</button>
       </div>
