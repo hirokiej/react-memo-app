@@ -18,7 +18,6 @@ export default function MemoList({
             setInput(memo.memo);
             setIsEditing(true);
             setSelectedId(() => memo.id);
-            console.log("ID", selectedId);
           }}
         >
           {memo.memo}

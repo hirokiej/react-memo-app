@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MemoList from "./MemoList";
 import Editor from "./Editor";
 import "./App.css";
 
 function App() {
-  const [memos, setMemos] = useState([]);
+  const initialMemos = JSON.parse(localStorage.getItem("memos"));
+  const [memos, setMemos] = useState(initialMemos);
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [selectedId, setSelectedId] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem("memos", JSON.stringify(memos));
+  }, [memos]);
 
   return (
     <>

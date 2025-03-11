@@ -9,7 +9,11 @@
   margin: 30px;
 }
 
-.memo-list .selected-memo:active {
+.memo-list div {
+  margin-bottom: 10px;
+}
+
+.memo-list .selected-memo {
   color: black;
 }
 
