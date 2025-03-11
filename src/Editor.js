@@ -9,10 +9,7 @@ export default function Editor({
   function handleEditMemo() {
     setMemos(
       memos.map((memo) => {
-        if (memo.id === selectedId) {
-          return { ...memo, memo: input };
-        }
-        return memo;
+        return memo.id === selectedId ? { ...memo, memo: input } : memo;
       })
     );
     setIsEditing(false);
