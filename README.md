@@ -12,7 +12,7 @@
 1.git clone をして、`react-memo`に移動をします。
 
 ```
-git clone https://github.com/hirokiej/react-memo.git
+git clone https://github.com/hirokiej/react-memo-app.git
 cd react-memo
 ```
 
