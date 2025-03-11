@@ -18,7 +18,7 @@ export default function Editor({
     setIsEditing(false);
   }
 
-  function handleDelete() {
+  function handleDeleteMemo() {
     setMemos(
       memos.filter((memo) => {
         return memo.id !== selectedId;
@@ -37,7 +37,7 @@ export default function Editor({
       />
       <div className="button-group">
         <button onClick={handleEditMemo}>更新</button>
-        <button onClick={handleDelete}>削除</button>
+        <button onClick={handleDeleteMemo}>削除</button>
       </div>
     </>
   );
