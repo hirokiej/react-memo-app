@@ -4,7 +4,7 @@ import Editor from "./Editor";
 import "./App.css";
 
 function App() {
-  const initialMemos = JSON.parse(localStorage.getItem("memos"));
+  const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
   const [memos, setMemos] = useState(initialMemos);
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
