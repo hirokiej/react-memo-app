@@ -8,6 +8,13 @@ export default function MemoList({
   setSelectedId,
   setInput,
 }) {
+  function handleAddMemo() {
+    const newMemo = { id: uuidv4(), memo: "新規メモ" };
+    setMemos([...memos, newMemo]);
+    setIsEditing(true);
+    setSelectedId(newMemo.id);
+    setInput(newMemo.memo);
+  }
   return (
     <>
       {memos.map((memo) => {
@@ -26,17 +33,7 @@ export default function MemoList({
           </div>
         );
       })}
-      <div
-        onClick={() => {
-          const newMemo = { id: uuidv4(), memo: "新規メモ" };
-          setMemos([...memos, newMemo]);
-          setIsEditing(true);
-          setSelectedId(newMemo.id);
-          setInput(newMemo.memo);
-        }}
-      >
-        +
-      </div>
+      <div onClick={handleAddMemo}>+</div>
     </>
   );
 }
