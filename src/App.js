@@ -8,7 +8,7 @@ function App() {
   const [memos, setMemos] = useState(initialMemos);
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [selectedId, setSelectedId] = useState(0);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
