@@ -22,7 +22,9 @@ export default function MemoList({
         return (
           <div
             key={memo.id}
-            className={memo.id === selectedId ? "selected-memo" : "other-memos"}
+            className={
+              memo.id === selectedId ? "selected-memo" : "unselected-memos"
+            }
             onClick={() => {
               setInput(memo.memo);
               setIsEditing(true);
