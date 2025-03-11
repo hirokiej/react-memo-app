@@ -30,12 +30,12 @@ function App() {
         <div className="edit">
           {isEditing && (
             <Editor
-              input={input}
-              setInput={setInput}
-              setMemos={setMemos}
               memos={memos}
+              setMemos={setMemos}
               setIsEditing={setIsEditing}
               selectedId={selectedId}
+              input={input}
+              setInput={setInput}
             />
           )}
         </div>
