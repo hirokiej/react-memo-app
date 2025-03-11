@@ -18,7 +18,7 @@ export default function MemoList({
   return (
     <>
       {memos.map((memo) => {
-        const firstLine = memo.memo.split("\n")[0];
+        const memoFirstLine = memo.memo.split("\n")[0];
         return (
           <div
             key={memo.id}
@@ -31,7 +31,7 @@ export default function MemoList({
               setSelectedId(() => memo.id);
             }}
           >
-            {firstLine}
+            {memoFirstLine}
           </div>
         );
       })}
