@@ -34,6 +34,7 @@ function App() {
               setMemos={setMemos}
               setIsEditing={setIsEditing}
               selectedId={selectedId}
+              setSelectedId={setSelectedId}
               input={input}
               setInput={setInput}
             />

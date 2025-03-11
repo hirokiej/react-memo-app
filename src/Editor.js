@@ -5,6 +5,7 @@ export default function Editor({
   memos,
   setIsEditing,
   selectedId,
+  setSelectedId,
 }) {
   function handleEditMemo() {
     setMemos(
@@ -13,6 +14,7 @@ export default function Editor({
       })
     );
     setIsEditing(false);
+    setSelectedId(null);
   }
 
   function handleDeleteMemo() {
