@@ -24,6 +24,7 @@
 }
 
 .edit textarea {
+  height: 200px;
   margin: 30px 0px 0px 0px;
   border-radius: 10px;
 }
