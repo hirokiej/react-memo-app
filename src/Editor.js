@@ -1,8 +1,21 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+Editor.propTypes = {
+  input: PropTypes.string,
+  setInput: PropTypes.func,
+  memos: PropTypes.array,
+  setMemos: PropTypes.func,
+  setIsEditing: PropTypes.func,
+  selectedId: PropTypes.string,
+  setSelectedId: PropTypes.func,
+};
+
 export default function Editor({
   input,
   setInput,
-  setMemos,
   memos,
+  setMemos,
   setIsEditing,
   selectedId,
   setSelectedId,

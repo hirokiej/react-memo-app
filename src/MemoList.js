@@ -1,4 +1,15 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
+
+MemoList.propTypes = {
+  memos: PropTypes.array,
+  setMemos: PropTypes.func,
+  setIsEditing: PropTypes.func,
+  selectedId: PropTypes.string,
+  setSelectedId: PropTypes.func,
+  setInput: PropTypes.func,
+};
 
 export default function MemoList({
   memos,

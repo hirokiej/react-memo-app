@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import MemoList from "./MemoList";
 import Editor from "./Editor";
 import "./App.css";
