@@ -24,7 +24,7 @@ export default function Editor({
     setMemos(
       memos.map((memo) => {
         return memo.id === selectedId ? { ...memo, memo: input } : memo;
-      })
+      }),
     );
     setIsEditing(false);
     setSelectedId(null);
@@ -34,7 +34,7 @@ export default function Editor({
     setMemos(
       memos.filter((memo) => {
         return memo.id !== selectedId;
-      })
+      }),
     );
     setIsEditing(false);
   }
