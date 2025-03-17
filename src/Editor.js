@@ -6,34 +6,16 @@ Editor.propTypes = {
   setMemos: PropTypes.func,
   selectedMemo: PropTypes.object,
   setSelectedMemo: PropTypes.func,
+  handleEditMemo: PropTypes.func,
+  handleDeleteMemo: PropTypes.func,
 };
 
 export default function Editor({
-  memos,
-  setMemos,
   selectedMemo,
   setSelectedMemo,
+  handleEditMemo,
+  handleDeleteMemo,
 }) {
-  function handleEditMemo() {
-    setMemos(
-      memos.map((memo) => {
-        return memo.id === selectedMemo.id
-          ? { ...memo, memo: selectedMemo.memo }
-          : memo;
-      })
-    );
-    setSelectedMemo(null);
-  }
-
-  function handleDeleteMemo() {
-    setMemos(
-      memos.filter((memo) => {
-        return memo.id !== selectedMemo.id;
-      })
-    );
-    setSelectedMemo(null);
-  }
-
   return (
     <>
       <textarea

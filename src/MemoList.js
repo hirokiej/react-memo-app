@@ -1,25 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { v4 as uuidv4 } from "uuid";
 
 MemoList.propTypes = {
   memos: PropTypes.array,
   setMemos: PropTypes.func,
   selectedMemo: PropTypes.object,
   setSelectedMemo: PropTypes.func,
+  handleAddMemo: PropTypes.func,
 };
 
 export default function MemoList({
   memos,
-  setMemos,
   selectedMemo,
   setSelectedMemo,
+  handleAddMemo,
 }) {
-  function handleAddMemo() {
-    const newMemo = { id: uuidv4(), memo: "新規メモ" };
-    setMemos([...memos, newMemo]);
-    setSelectedMemo(newMemo);
-  }
   return (
     <>
       {memos.map((memo) => {

@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import MemoList from "./MemoList";
 import Editor from "./Editor";
 import "./App.css";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
@@ -12,6 +13,32 @@ function App() {
     localStorage.setItem("memos", JSON.stringify(memos));
   }, [memos]);
 
+  function handleAddMemo() {
+    const newMemo = { id: uuidv4(), memo: "新規メモ" };
+    setMemos([...memos, newMemo]);
+    setSelectedMemo(newMemo);
+  }
+
+  function handleEditMemo() {
+    setMemos(
+      memos.map((memo) => {
+        return memo.id === selectedMemo.id
+          ? { ...memo, memo: selectedMemo.memo }
+          : memo;
+      }),
+    );
+    setSelectedMemo(null);
+  }
+
+  function handleDeleteMemo() {
+    setMemos(
+      memos.filter((memo) => {
+        return memo.id !== selectedMemo.id;
+      }),
+    );
+    setSelectedMemo(null);
+  }
+
   return (
     <>
       <div className="app">
@@ -21,6 +48,7 @@ function App() {
             setMemos={setMemos}
             selectedMemo={selectedMemo}
             setSelectedMemo={setSelectedMemo}
+            handleAddMemo={handleAddMemo}
           />
         </div>
         <div className="edit">
@@ -30,6 +58,8 @@ function App() {
               setMemos={setMemos}
               selectedMemo={selectedMemo}
               setSelectedMemo={setSelectedMemo}
+              handleEditMemo={handleEditMemo}
+              handleDeleteMemo={handleDeleteMemo}
             />
           )}
         </div>
