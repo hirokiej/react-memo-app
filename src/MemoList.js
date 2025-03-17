@@ -5,26 +5,20 @@ import { v4 as uuidv4 } from "uuid";
 MemoList.propTypes = {
   memos: PropTypes.array,
   setMemos: PropTypes.func,
-  setIsEditing: PropTypes.func,
-  selectedId: PropTypes.string,
-  setSelectedId: PropTypes.func,
-  setInput: PropTypes.func,
+  selectedMemo: PropTypes.object,
+  setSelectedMemo: PropTypes.func,
 };
 
 export default function MemoList({
   memos,
   setMemos,
-  setIsEditing,
-  selectedId,
-  setSelectedId,
-  setInput,
+  selectedMemo,
+  setSelectedMemo,
 }) {
   function handleAddMemo() {
     const newMemo = { id: uuidv4(), memo: "新規メモ" };
     setMemos([...memos, newMemo]);
-    setIsEditing(true);
-    setSelectedId(newMemo.id);
-    setInput(newMemo.memo);
+    setSelectedMemo(newMemo);
   }
   return (
     <>
@@ -34,12 +28,12 @@ export default function MemoList({
           <div
             key={memo.id}
             className={
-              memo.id === selectedId ? "selected-memo" : "unselected-memos"
+              memo.id === selectedMemo?.id
+                ? "selected-memo"
+                : "unselected-memos"
             }
             onClick={() => {
-              setInput(memo.memo);
-              setIsEditing(true);
-              setSelectedId(() => memo.id);
+              setSelectedMemo(() => memo);
             }}
           >
             {memoFirstLine}

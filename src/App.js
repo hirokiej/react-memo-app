@@ -6,9 +6,7 @@ import "./App.css";
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
   const [memos, setMemos] = useState(initialMemos);
-  const [input, setInput] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedMemo, setSelectedMemo] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
@@ -21,22 +19,17 @@ function App() {
           <MemoList
             memos={memos}
             setMemos={setMemos}
-            setIsEditing={setIsEditing}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            setInput={setInput}
+            selectedMemo={selectedMemo}
+            setSelectedMemo={setSelectedMemo}
           />
         </div>
         <div className="edit">
-          {isEditing && (
+          {selectedMemo && (
             <Editor
               memos={memos}
               setMemos={setMemos}
-              setIsEditing={setIsEditing}
-              selectedId={selectedId}
-              setSelectedId={setSelectedId}
-              input={input}
-              setInput={setInput}
+              selectedMemo={selectedMemo}
+              setSelectedMemo={setSelectedMemo}
             />
           )}
         </div>

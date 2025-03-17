@@ -2,46 +2,46 @@ import React from "react";
 import PropTypes from "prop-types";
 
 Editor.propTypes = {
-  input: PropTypes.string,
-  setInput: PropTypes.func,
   memos: PropTypes.array,
   setMemos: PropTypes.func,
-  setIsEditing: PropTypes.func,
-  selectedId: PropTypes.string,
-  setSelectedId: PropTypes.func,
+  selectedMemo: PropTypes.object,
+  setSelectedMemo: PropTypes.func,
 };
 
 export default function Editor({
-  input,
-  setInput,
   memos,
   setMemos,
-  setIsEditing,
-  selectedId,
-  setSelectedId,
+  selectedMemo,
+  setSelectedMemo,
 }) {
   function handleEditMemo() {
     setMemos(
       memos.map((memo) => {
-        return memo.id === selectedId ? { ...memo, memo: input } : memo;
-      }),
+        return memo.id === selectedMemo.id
+          ? { ...memo, memo: selectedMemo.memo }
+          : memo;
+      })
     );
-    setIsEditing(false);
-    setSelectedId(null);
+    setSelectedMemo(null);
   }
 
   function handleDeleteMemo() {
     setMemos(
       memos.filter((memo) => {
-        return memo.id !== selectedId;
-      }),
+        return memo.id !== selectedMemo.id;
+      })
     );
-    setIsEditing(false);
+    setSelectedMemo(null);
   }
 
   return (
     <>
-      <textarea value={input} onChange={(e) => setInput(e.target.value)} />
+      <textarea
+        value={selectedMemo.memo}
+        onChange={(e) =>
+          setSelectedMemo({ ...selectedMemo, memo: e.target.value })
+        }
+      />
       <div className="button-group">
         <button onClick={handleEditMemo}>更新</button>
         <button onClick={handleDeleteMemo}>削除</button>
