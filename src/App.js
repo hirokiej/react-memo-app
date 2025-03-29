@@ -8,10 +8,17 @@ function App() {
   const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
   const [memos, setMemos] = useState(initialMemos);
   const [selectedMemo, setSelectedMemo] = useState(null);
+  const [updatedMemo, setUpdatedMemo] = useState("");
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
   }, [memos]);
+
+  useEffect(() => {
+    if (selectedMemo) {
+      setUpdatedMemo(selectedMemo.memo);
+    }
+  }, [selectedMemo]);
 
   function handleAddMemo() {
     const newMemo = { id: uuidv4(), memo: "新規メモ" };
@@ -19,13 +26,13 @@ function App() {
     setSelectedMemo(newMemo);
   }
 
-  function handleEditMemo() {
+  function handleEditMemo(updatedMemo) {
     setMemos(
       memos.map((memo) => {
         return memo.id === selectedMemo.id
-          ? { ...memo, memo: selectedMemo.memo }
+          ? { ...memo, memo: updatedMemo }
           : memo;
-      }),
+      })
     );
     setSelectedMemo(null);
   }
@@ -54,10 +61,9 @@ function App() {
         <div className="edit">
           {selectedMemo && (
             <Editor
-              memos={memos}
-              setMemos={setMemos}
               selectedMemo={selectedMemo}
-              setSelectedMemo={setSelectedMemo}
+              updatedMemo={updatedMemo}
+              setUpdatedMemo={setUpdatedMemo}
               handleEditMemo={handleEditMemo}
               handleDeleteMemo={handleDeleteMemo}
             />
