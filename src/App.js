@@ -37,11 +37,11 @@ function App() {
     setSelectedMemo(null);
   }
 
-  function handleDeleteMemo() {
+  function handleDeleteMemo(selectedMemo) {
     setMemos(
       memos.filter((memo) => {
         return memo.id !== selectedMemo.id;
-      }),
+      })
     );
     setSelectedMemo(null);
   }

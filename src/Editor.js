@@ -25,7 +25,7 @@ export default function Editor({
       />
       <div className="button-group">
         <button onClick={() => handleEditMemo(updatedMemo)}>更新</button>
-        <button onClick={handleDeleteMemo}>削除</button>
+        <button onClick={() => handleDeleteMemo(selectedMemo)}>削除</button>
       </div>
     </>
   );
