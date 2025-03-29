@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 MemoList.propTypes = {
   memos: PropTypes.array,
-  setMemos: PropTypes.func,
   selectedMemo: PropTypes.object,
   setSelectedMemo: PropTypes.func,
   handleAddMemo: PropTypes.func,
