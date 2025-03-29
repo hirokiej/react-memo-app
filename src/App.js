@@ -32,7 +32,7 @@ function App() {
         return memo.id === selectedMemo.id
           ? { ...memo, memo: updatedMemo }
           : memo;
-      })
+      }),
     );
     setSelectedMemo(null);
   }
@@ -41,7 +41,7 @@ function App() {
     setMemos(
       memos.filter((memo) => {
         return memo.id !== selectedMemo.id;
-      })
+      }),
     );
     setSelectedMemo(null);
   }
