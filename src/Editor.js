@@ -12,37 +12,23 @@ export default function Editor({
   handleEditMemo,
   handleDeleteMemo,
 }) {
-  const [updatedMemo, setUpdatedMemo] = useState(selectedMemo);
+  const [updatedMemo, setUpdatedMemo] = useState("");
 
   useEffect(() => {
     if (selectedMemo) {
-      setUpdatedMemo(selectedMemo);
+      setUpdatedMemo(selectedMemo.memo);
     }
   }, [selectedMemo]);
 
   return (
     <>
       <textarea
-        value={updatedMemo.memo}
-        onChange={(e) =>
-          setUpdatedMemo({ ...updatedMemo, memo: e.target.value })
-        }
+        value={updatedMemo}
+        onChange={(e) => setUpdatedMemo(e.target.value)}
       />
       <div className="button-group">
-        <button
-          onClick={() =>
-            handleEditMemo({ ...updatedMemo, memo: updatedMemo.memo })
-          }
-        >
-          更新
-        </button>
-        <button
-          onClick={() =>
-            handleDeleteMemo({ ...selectedMemo, memo: selectedMemo.memo })
-          }
-        >
-          削除
-        </button>
+        <button onClick={() => handleEditMemo(updatedMemo)}>更新</button>
+        <button onClick={() => handleDeleteMemo(selectedMemo)}>削除</button>
       </div>
     </>
   );

@@ -23,7 +23,7 @@ function App() {
     setMemos(
       memos.map((memo) => {
         return memo.id === selectedMemo.id
-          ? { ...memo, memo: updatedMemo.memo }
+          ? { ...memo, memo: updatedMemo }
           : memo;
       }),
     );
