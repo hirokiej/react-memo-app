@@ -4,6 +4,7 @@ import Editor from "./Editor";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
 import { LoggedInProvider } from "./LoggedInContext";
+import LoginButton from "./LoginButton";
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
@@ -50,6 +51,9 @@ function App() {
             setSelectedMemo={setSelectedMemo}
             handleAddMemo={handleAddMemo}
           />
+        </div>
+        <div>
+          <LoginButton />
         </div>
         <div className="edit">
           {selectedMemo && (
