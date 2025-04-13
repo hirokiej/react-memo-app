@@ -3,6 +3,7 @@ import MemoList from "./MemoList";
 import Editor from "./Editor";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
+import { LoggedInProvider } from "./LoggedInContext";
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
@@ -40,7 +41,7 @@ function App() {
   }
 
   return (
-    <>
+    <LoggedInProvider>
       <div className="app">
         <div className="memo-list">
           <MemoList
@@ -60,7 +61,7 @@ function App() {
           )}
         </div>
       </div>
-    </>
+    </LoggedInProvider>
   );
 }
 

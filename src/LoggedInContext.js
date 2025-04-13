@@ -1,3 +1,7 @@
 import { createContext } from "react";
 
-export default LoggedInContext = createContext("");
+const LoggedInContext = createContext("");
+
+export const LoggedInProvider = ({ children }) => {
+  return <LoggedInContext>{children}</LoggedInContext>;
+};
