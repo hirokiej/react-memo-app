@@ -1,5 +1,15 @@
-import { React } from "react";
+import { React, useContext } from "react";
+import { LoggedInContext } from "./LoggedInContext";
 
 export default function LoginButton() {
-  return <button>login</button>;
+  const { isLoggedIn, login, logout } = useContext(LoggedInContext);
+  return (
+    <>
+      {isLoggedIn ? (
+        <button onClick={logout}>logout</button>
+      ) : (
+        <button onClick={login}>login</button>
+      )}
+    </>
+  );
 }
