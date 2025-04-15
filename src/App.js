@@ -52,17 +52,17 @@ function App() {
             handleAddMemo={handleAddMemo}
           />
         </div>
-        <div>
+        <div className="right-side">
           <LoginButton />
-        </div>
-        <div className="edit">
-          {selectedMemo && (
-            <Editor
-              selectedMemo={selectedMemo}
-              handleEditMemo={handleEditMemo}
-              handleDeleteMemo={handleDeleteMemo}
-            />
-          )}
+          <div className="edit">
+            {selectedMemo && (
+              <Editor
+                selectedMemo={selectedMemo}
+                handleEditMemo={handleEditMemo}
+                handleDeleteMemo={handleDeleteMemo}
+              />
+            )}
+          </div>
         </div>
       </div>
     </LoggedInProvider>
