@@ -1,6 +1,6 @@
-import { React, useContext, useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { LoggedInContext } from "./LoggedInContext";
+import { useLoggedIn } from "./loginHooks";
 
 Editor.propTypes = {
   selectedMemo: PropTypes.object,
@@ -14,7 +14,7 @@ export default function Editor({
   handleDeleteMemo,
 }) {
   const [updatedMemo, setUpdatedMemo] = useState("");
-  const { isLoggedIn } = useContext(LoggedInContext);
+  const { isLoggedIn } = useLoggedIn();
 
   useEffect(() => {
     if (selectedMemo) {

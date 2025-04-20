@@ -1,8 +1,8 @@
-import { React, useContext } from "react";
-import { LoggedInContext } from "./LoggedInContext";
+import { React } from "react";
+import { useLoggedIn } from "./loginHooks";
 
 export default function LoginButton() {
-  const { isLoggedIn, login, logout } = useContext(LoggedInContext);
+  const { isLoggedIn, login, logout } = useLoggedIn();
   return (
     <div className="login-button">
       {isLoggedIn ? (

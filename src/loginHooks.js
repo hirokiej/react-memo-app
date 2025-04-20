@@ -1,7 +1,7 @@
-import { React, useState, createContext } from "react";
+import { React, useState, createContext, useContext } from "react";
 import PropTypes from "prop-types";
 
-export const LoggedInContext = createContext("");
+const LoggedInContext = createContext("");
 
 export const LoggedInProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,3 +19,5 @@ export const LoggedInProvider = ({ children }) => {
 LoggedInProvider.propTypes = {
   children: PropTypes.node,
 };
+
+export const useLoggedIn = () => useContext(LoggedInContext);

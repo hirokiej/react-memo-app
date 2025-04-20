@@ -1,6 +1,6 @@
-import { React, useContext } from "react";
+import { React } from "react";
 import PropTypes from "prop-types";
-import { LoggedInContext } from "./LoggedInContext";
+import { useLoggedIn } from "./loginHooks";
 
 MemoList.propTypes = {
   memos: PropTypes.array,
@@ -15,7 +15,7 @@ export default function MemoList({
   setSelectedMemo,
   handleAddMemo,
 }) {
-  const { isLoggedIn } = useContext(LoggedInContext);
+  const { isLoggedIn } = useLoggedIn();
   return (
     <>
       {memos.map((memo) => {

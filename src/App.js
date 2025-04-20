@@ -3,7 +3,7 @@ import MemoList from "./MemoList";
 import Editor from "./Editor";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
-import { LoggedInProvider } from "./LoggedInContext";
+import { LoggedInProvider } from "./loginHooks";
 import LoginButton from "./LoginButton";
 
 function App() {
