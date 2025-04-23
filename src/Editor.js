@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useLoggedIn } from "./loginHooks";
 
 Editor.propTypes = {
   selectedMemo: PropTypes.object,
@@ -13,6 +14,7 @@ export default function Editor({
   handleDeleteMemo,
 }) {
   const [updatedMemo, setUpdatedMemo] = useState("");
+  const { isLoggedIn } = useLoggedIn();
 
   useEffect(() => {
     if (selectedMemo) {
@@ -26,10 +28,12 @@ export default function Editor({
         value={updatedMemo}
         onChange={(e) => setUpdatedMemo(e.target.value)}
       />
-      <div className="button-group">
-        <button onClick={() => handleEditMemo(updatedMemo)}>更新</button>
-        <button onClick={() => handleDeleteMemo(selectedMemo)}>削除</button>
-      </div>
+      {isLoggedIn ? (
+        <div className="button-group">
+          <button onClick={() => handleEditMemo(updatedMemo)}>更新</button>
+          <button onClick={() => handleDeleteMemo(selectedMemo)}>削除</button>
+        </div>
+      ) : null}
     </>
   );
 }

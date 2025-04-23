@@ -1,5 +1,6 @@
-import React from "react";
+import { React } from "react";
 import PropTypes from "prop-types";
+import { useLoggedIn } from "./loginHooks";
 
 MemoList.propTypes = {
   memos: PropTypes.array,
@@ -14,6 +15,7 @@ export default function MemoList({
   setSelectedMemo,
   handleAddMemo,
 }) {
+  const { isLoggedIn } = useLoggedIn();
   return (
     <>
       {memos.map((memo) => {
@@ -34,7 +36,8 @@ export default function MemoList({
           </div>
         );
       })}
-      <div onClick={handleAddMemo}>+</div>
+
+      {isLoggedIn ? <div onClick={handleAddMemo}>+</div> : null}
     </>
   );
 }

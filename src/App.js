@@ -3,6 +3,8 @@ import MemoList from "./MemoList";
 import Editor from "./Editor";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
+import { LoggedInProvider } from "./loginHooks";
+import LoginButton from "./LoginButton";
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem("memos") || []);
@@ -40,7 +42,7 @@ function App() {
   }
 
   return (
-    <>
+    <LoggedInProvider>
       <div className="app">
         <div className="memo-list">
           <MemoList
@@ -50,17 +52,20 @@ function App() {
             handleAddMemo={handleAddMemo}
           />
         </div>
-        <div className="edit">
-          {selectedMemo && (
-            <Editor
-              selectedMemo={selectedMemo}
-              handleEditMemo={handleEditMemo}
-              handleDeleteMemo={handleDeleteMemo}
-            />
-          )}
+        <div className="right-side">
+          <LoginButton />
+          <div className="edit">
+            {selectedMemo && (
+              <Editor
+                selectedMemo={selectedMemo}
+                handleEditMemo={handleEditMemo}
+                handleDeleteMemo={handleDeleteMemo}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </>
+    </LoggedInProvider>
   );
 }
 
